@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Anemia Detector · Check Input</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(180deg, #f5f7fb 0%, #ffffff 60%, #f3f4ff 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #111827;
+    }
+    .navbar {
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+    .hero {
+      padding: 3rem 1.5rem 2rem;
+    }
+    .card-floating {
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card-floating:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.10);
+    }
+    .hero-title {
+      font-weight: 700;
+      font-size: 2rem;
+    }
+    .hero-subtitle {
+      color: #6b7280;
+      font-size: 0.98rem;
+    }
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 0.78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      margin-right: 0.4rem;
+      box-shadow: 0 0 6px rgba(22, 163, 74, 0.9);
+    }
+    label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #6b7280;
+    }
+    .form-control, .custom-select {
+      border-radius: 999px;
+      padding-left: 1.1rem;
+      border: 1px solid #d1d5db;
+      transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .form-control:focus, .custom-select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+      transform: translateY(-1px);
+    }
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      width: 100%;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: white;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      box-shadow: 0 16px 35px rgba(79, 70, 229, 0.35);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 45px rgba(79, 70, 229, 0.45);
+      filter: brightness(1.03);
+    }
+    .primary-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 12px 25px rgba(79, 70, 229, 0.3);
+    }
+    .hero-illustration {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+    }
+    .hero-illustration img {
+      width: 100%;
+      display: block;
+      transition: transform .6s ease;
+    }
+    .hero-illustration:hover img {
+      transform: scale(1.03);
+    }
+    .info-card {
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: #ffffff;
+      padding: 1rem 1.1rem;
+      font-size: 0.86rem;
+      height: 100%;
+    }
+    .info-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-right: 0.4rem;
+    }
+    .table-mini {
+      font-size: 0.8rem;
+    }
+    .table-mini th {
+      font-weight: 600;
+      color: #6b7280;
+      border-top: none;
+    }
+    .table-mini td {
+      color: #111827;
+    }
+    footer {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      padding: 0.75rem 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="{{ url_for('index') }}">
+        <img src="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/12/medical-logo-design.jpg"
+             class="rounded-circle mr-2" style="width: 36px; height: 36px;" alt="Clinic logo">
+        <span class="font-weight-semibold">Anemia Detector</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="hero container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4">
+        <div class="card card-floating p-4">
+          <span class="pill-tag mb-3">
+            <span class="pill-dot"></span>
+            Quick health check
+          </span>
+          <h1 class="hero-title mb-2">Estimate anemia risk in under a minute.</h1>
+          <p class="hero-subtitle mb-4">
+            Provide your recent blood test values and this model will estimate the likelihood of anemia.
+            The tool is easy to use, mobile‑friendly, and visually guided.
+          </p>
+
+          <form method="post" action="{{ url_for('predict') }}">
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select class="custom-select" id="gender" name="gender" required>
+                <option value="" disabled selected>Select gender</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="hemoglobin">Hemoglobin (g/dL)</label>
+              <input type="number" step="0.1" min="1" max="25"
+                     class="form-control" id="hemoglobin" name="hemoglobin"
+                     placeholder="e.g., 13.5" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mch">MCH (pg)</label>
+              <input type="number" step="0.1" min="10" max="40"
+                     class="form-control" id="mch" name="mch"
+                     placeholder="e.g., 27.5" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mchc">MCHC (g/dL)</label>
+              <input type="number" step="0.1" min="25" max="40"
+                     class="form-control" id="mchc" name="mchc"
+                     placeholder="e.g., 32.0" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mcv">MCV (fL)</label>
+              <input type="number" step="0.1" min="60" max="120"
+                     class="form-control" id="mcv" name="mcv"
+                     placeholder="e.g., 85.0" required>
+            </div>
+
+            <button type="submit" class="primary-btn mt-2">
+              Predict anemia
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-4">
+        <div class="hero-illustration mb-3">
+          <img src="https://images.drlogy.com/assets/uploads/img/admin/health_blog/iron-deficiency-anemia-test.webp"
+               alt="Doctor reviewing lab tests">
+        </div>
+
+        <div class="row">
+          <div class="col-md-7 mb-3">
+            <div class="info-card d-flex">
+              <div class="info-icon bg-indigo-100" style="background:#e0e7ff; color:#4338ca;">
+                &#128138;
+              </div>
+              <div>
+                <strong>How it works</strong>
+                <p class="mb-1">
+                  The model uses your blood indices to classify whether the pattern looks similar to anemia cases.
+                </p>
+                <p class="mb-0 text-muted" style="font-size:0.78rem;">
+                  It is an educational tool and cannot replace a laboratory or doctor.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 mb-3">
+            <div class="info-card">
+              <strong class="d-block mb-2">Parameters used</strong>
+              <table class="table table-borderless table-sm table-mini mb-0">
+                <tr>
+                  <th>Hemoglobin</th>
+                  <td>Oxygen‑carrying protein.</td>
+                </tr>
+                <tr>
+                  <th>MCV</th>
+                  <td>Cell size.</td>
+                </tr>
+                <tr>
+                  <th>MCH/MCHC</th>
+                  <td>Hemoglobin amount & concentration.</td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td>Adjusts normal ranges.</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="text-center">
+      This demo is for learning purposes only and should not guide medical decisions.
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
